@@ -28,6 +28,15 @@ The application will start on the default port (usually 8080).
 - **Example**: `/sum?a=10&b=5`
 - **Response**: `{"result": 15}`
 
+**Curl Example (Success):**
+```bash
+curl -X GET "http://localhost:8080/sum?a=10&b=5"
+```
+Expected Output:
+```json
+{"result":15}
+```
+
 ### `/multiply`
 - **Method**: `GET`
 - **Parameters**:
@@ -36,9 +45,28 @@ The application will start on the default port (usually 8080).
 - **Example**: `/multiply?a=10&b=5`
 - **Response**: `{"result": 50}`
 
+**Curl Example (Success):**
+```bash
+curl -X GET "http://localhost:8080/multiply?a=10&b=5"
+```
+Expected Output:
+```json
+{"result":50}
+```
+
 ### Error Responses
 If invalid parameters are provided (e.g., non-integer values when integers are expected), the API will return an HTTP 500 status code.
 The error response body will be a JSON object in the following format:
+```json
+{"result":"Error: Invalid input. Please provide integers only."}
+```
+
+**Curl Example (Error - Invalid Input for /sum):**
+The following command demonstrates an attempt to send a non-integer value for parameter 'a'.
+```bash
+curl -i -X GET "http://localhost:8080/sum?a=abc&b=5"
+```
+Expected Output (Note: `-i` shows headers, you'll see HTTP/1.1 500 Internal Server Error):
 ```json
 {"result":"Error: Invalid input. Please provide integers only."}
 ```
