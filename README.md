@@ -26,7 +26,7 @@ The application will start on the default port (usually 8080).
     - `a` (integer): The first number.
     - `b` (integer): The second number.
 - **Example**: `/sum?a=10&b=5`
-- **Response**: `15`
+- **Response**: `{"result": 15}`
 
 ### `/multiply`
 - **Method**: `GET`
@@ -34,7 +34,14 @@ The application will start on the default port (usually 8080).
     - `a` (integer): The first number.
     - `b` (integer): The second number.
 - **Example**: `/multiply?a=10&b=5`
-- **Response**: `50`
+- **Response**: `{"result": 50}`
+
+### Error Responses
+If invalid parameters are provided (e.g., non-integer values when integers are expected), the API will return an HTTP 500 status code.
+The error response body will be a JSON object in the following format:
+```json
+{"result":"Error: Invalid input. Please provide integers only."}
+```
 
 ## API Documentation
 OpenAPI documentation is available when the application is running. You can access it via your web browser at:

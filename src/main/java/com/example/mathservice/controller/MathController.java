@@ -1,5 +1,6 @@
 package com.example.mathservice.controller;
 
+import com.example.mathservice.dto.ApiResponse;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -8,12 +9,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class MathController {
 
     @GetMapping("/sum")
-    public Integer sum(@RequestParam Integer a, @RequestParam Integer b) {
-        return a + b;
+    public ApiResponse sum(@RequestParam Integer a, @RequestParam Integer b) {
+        return new ApiResponse(a + b);
     }
 
     @GetMapping("/multiply")
-    public Integer multiply(@RequestParam Integer a, @RequestParam Integer b) {
-        return a * b;
+    public ApiResponse multiply(@RequestParam Integer a, @RequestParam Integer b) {
+        return new ApiResponse(a * b);
     }
 }
